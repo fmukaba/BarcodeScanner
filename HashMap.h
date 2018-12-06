@@ -26,7 +26,7 @@ public:
 		tableSize = size;
 		array = new LinkedList<T> [tableSize];
 	}
-
+	
 	void add(T &element) {
 		int hashEntry = hash(element);
 		array[hashEntry].insertLast(element);
@@ -34,20 +34,19 @@ public:
 	LinkedList<T>& getList(int index) {
 		return array[index];
 	}
+	
 	template<typename U>
 	T search(U hashable) {
 		int hashEntry = hash(hashable);
 		T itemFound = getList(hashEntry).search(hashable);
-		//if (itemFound != NULL) {
 		return itemFound;
-		//} else {
-//			return -1;
-//		}
 	}
+	// identify the hashable field of an object and return an hash entry
 	int hash(T &item) {
 		return item() % 1000;
 	}
-private:
+	
+private: //helper hash if user want to identify himself the hashable field
 	template<typename U>
 	int hash(U element) {
 		return element % 1000;
