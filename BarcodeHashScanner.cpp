@@ -15,7 +15,7 @@
 #include "HashMap.h"
 using namespace std;
 using namespace std::chrono;
-int s = 0;
+
 void initializeHash(string fileName, HashMap<Item> & map) {
 	ifstream file(fileName); // store the file in a ifstream object
 	string line;
@@ -30,8 +30,6 @@ void initializeHash(string fileName, HashMap<Item> & map) {
 		//create and add the item retrieved from the line
 		Item item(itemName, barcode);
 		map.add(item);
-		s++;
-
 	}
 }
 
@@ -41,11 +39,7 @@ int main() {
 	h.add(q);
 	string fileName = "upc_corpus.txt";
 	initializeHash(fileName, h);
-
-//	Item s = h.search(q.getBarcode());
-//	Item w = h.search(52569732953);
-//	cout << "itemFound : " << w << endl;
-
+	
 	//SAMPLE RuN 1
 	cout << "SAMPLE RUN 1" << endl;
 	long long target1 = 52569758373;
@@ -95,6 +89,5 @@ int main() {
 	end = high_resolution_clock::now();
 	duration = duration_cast<microseconds>(end - start).count();
 	cout << "time5: " << duration << " microseconds" << endl;
-	//use getName() with the barcode inputed o get a conssistent output matching barcode parameter and name of product found
 }
 
